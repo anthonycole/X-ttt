@@ -6,6 +6,9 @@ import SetGameType from './SetGameType'
 
 import GameMain from './GameMain'
 
+
+import { updateDataStore } from '../../helpers/dataStore'
+
 export default class Ttt extends Component {
 
 	constructor (props) {
@@ -53,6 +56,7 @@ export default class Ttt extends Component {
 //	------------------------	------------------------	------------------------
 
 	saveUserName (n) {
+		updateDataStore({name: n});
 		app.settings.curr_user = {}
 		app.settings.curr_user.name = n
 
