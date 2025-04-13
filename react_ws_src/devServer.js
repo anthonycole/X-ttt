@@ -12,15 +12,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
-
-// app.use(express.static(paths.client('images')))
-// app.use(express.static('static'))
-
-var proxy = require('proxy-middleware');
-var url = require('url');
-// app.use('/images', proxy(url.parse('../WS/images')));
-// app.use('/img', proxy(url.parse('../WS/img')));
-app.use('/images', proxy(url.parse('http://z2/projs/kisla/X-react-starter/dev/WS/images')));
+app.use('/images', express.static(path.join(__dirname, 'static/images')));
 
 app.get('*', function(req, res) {
 	res.sendFile(path.join(__dirname, 'static', 'index.html'));
